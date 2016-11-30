@@ -1,4 +1,4 @@
-TEST_DATA_TEST_REPO2 = '
+DRONE_DATA_REPO2 = '
 [{
 	"id": 12,
 	"number": 12,
@@ -27,7 +27,7 @@ TEST_DATA_TEST_REPO2 = '
 }]
 '
 
-TEST_DATA_TEST_REPO = '
+DRONE_DATA_REPO1 = '
 [{
 	"id": 3469,
 	"number": 3469,
@@ -134,7 +134,7 @@ TEST_DATA_TEST_REPO = '
 }]
 '
 
-FILTERED_TEST_DATA_TEST_REPO = '
+FILTERED_DRONE_DATA_REPO1 = '
 [{
 	"id": 3470,
 	"number": 3470,
