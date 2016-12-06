@@ -1,5 +1,5 @@
-require 'net/http'
 require 'json'
+require 'httparty'
 require_relative './github'
 
 def get_drone_builds_also_in_github(repo_names)
@@ -27,9 +27,8 @@ def get_latest_build_for_each_branch(json)
 end
 
 def get_drone_builds_for_repo(repo_name)
-  uri = URI.parse('https://drone.digital.homeoffice.gov.uk/api/repos/' + repo_name + '/builds')
-  drone_results = Net::HTTP.get(uri)
-  parsed_results = JSON.parse(drone_results)
+  response = HTTParty.get('https://drone.digital.homeoffice.gov.uk/api/repos/' + repo_name + '/builds')
+  parsed_results = JSON.parse(response.body)
   latest_builds_per_branch = get_latest_build_for_each_branch(parsed_results)
 
   latest_builds_per_branch.map { |b| {
