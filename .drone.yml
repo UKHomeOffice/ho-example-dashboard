@@ -1,0 +1,28 @@
+pipeline:
+  test:
+    image: quay.io/ukhomeofficedigital/ruby
+    commands:
+      - bundle install
+      - bundle exec rspec
+    when:
+      event: push
+
+  build-image:
+    privileged: true
+    image: docker:1.11
+    environment:
+      - DOCKER_HOST=tcp://127.0.0.1:2375
+    commands:
+      - docker build -t quay.io/ukhomeofficedigital/ho-example-dashboard .
+      - docker push quay.io/ukhomeofficedigital/ho-example-dashboard
+    when:
+      branch: master
+      event: push
+
+services:
+  dind:
+    image: docker:1.11-dind
+    privileged: true
+    command:
+      - "-s"
+      - "overlay"

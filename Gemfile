@@ -6,5 +6,6 @@ gem 'octokit'
 gem 'therubyracer'
 
 group :test do
-  gem "webmock"
+  gem 'webmock'
+  gem 'rspec'
 end
