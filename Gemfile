@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'smashing'
-
-## Remove this if you don't need a twitter widget.
-gem 'twitter', '>= 5.9.0'
+gem 'smashing', '>= 1.0.0'
+gem 'httparty'
+gem 'octokit'
+gem 'therubyracer'
 
 group :test do
-  gem "webmock"
+  gem 'webmock'
+  gem 'rspec'
 end
