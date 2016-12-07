@@ -1,0 +1,50 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{.DASHBOARD_NAME}}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: {{.DASHBOARD_NAME}}
+    spec:
+      containers:
+      - name: {{.DASHBOARD_NAME}}
+        image: quay.io/ukhomeofficedigital/ho-example-dashboard
+        ports:
+          - name: http
+            containerPort: 3030
+        resources:
+          limits:
+            cpu: 250m
+        env:
+        - name: GITHUB_REPOS
+          value: UKHomeOffice/docker-node-hello-world,UKHomeOffice/lev-web
+        - name: GITHUB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: gh-user
+              key: username
+        - name: GITHUB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gh-user
+              key: password
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+      - name: proxy
+        image: quay.io/ukhomeofficedigital/nginx-proxy:v1.6.1
+        env:
+          - name: PROXY_SERVICE_HOST
+            value: '127.0.0.1'
+          - name: PROXY_SERVICE_PORT
+            value: '3030'
+          - name: LOG_FORMAT_NAME
+            value: json
+        ports:
+          - name: https
+            containerPort: 443

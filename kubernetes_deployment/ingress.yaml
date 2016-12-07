@@ -1,0 +1,16 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/secure-backends: "false"
+  name: {{.DASHBOARD_NAME}}
+spec:
+  rules:
+  - host: {{.DASHBOARD_NAME}}.notprod.homeoffice.gov.uk
+    http:
+      paths:
+      - backend:
+          serviceName: {{.DASHBOARD_NAME}}
+          servicePort: http
+        path: /
