@@ -22,6 +22,17 @@ pipeline:
       branch: master
       event: push
 
+  deploy-image:
+    image: quay.io/ukhomeofficedigital/kd:latest
+    environment:
+      - KUBE_NAMESPACE=dev-induction
+    commands:
+      - export KUBE_SERVER=${KUBE_SERVER_DEV}
+      - cd kubernetes_deployment
+      - kd --insecure-skip-tls-verify --file gh_user_secret.yaml --file deployment.yaml --file service.yaml --file ingress.yaml
+    when:
+      event: deployment
+
 services:
   dind:
     image: docker:1.11-dind

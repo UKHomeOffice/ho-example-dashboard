@@ -21,7 +21,7 @@ spec:
             cpu: 250m
         env:
         - name: GITHUB_REPOS
-          value: UKHomeOffice/docker-node-hello-world,UKHomeOffice/lev-web
+          value: {{.GITHUB_REPOS}}
         - name: GITHUB_USERNAME
           valueFrom:
             secretKeyRef:
