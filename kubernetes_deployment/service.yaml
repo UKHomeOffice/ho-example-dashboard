@@ -5,8 +5,8 @@ metadata:
   name: {{.DASHBOARD_NAME}}
 spec:
   ports:
-  - name: http
-    port: 80
-    targetPort: http
+  - name: https
+    port: 443
+    targetPort: https
   selector:
     name: {{.DASHBOARD_NAME}}

@@ -3,7 +3,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    ingress.kubernetes.io/secure-backends: "false"
+    ingress.kubernetes.io/secure-backends: "true"
   name: {{.DASHBOARD_NAME}}
 spec:
   rules:
@@ -12,5 +12,10 @@ spec:
       paths:
       - backend:
           serviceName: {{.DASHBOARD_NAME}}
-          servicePort: http
+          servicePort: https
         path: /
+  tls:
+  - hosts:
+    - {{.DASHBOARD_NAME}}.notprod.homeoffice.gov.uk
+    - www.{{.DASHBOARD_NAME}}.notprod.homeoffice.gov.uk
+    secretName: external-tls
