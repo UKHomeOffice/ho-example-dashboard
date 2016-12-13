@@ -45,6 +45,9 @@ spec:
             value: '3030'
           - name: LOG_FORMAT_NAME
             value: json
+          - name: EXTRA_NAXSI_RULES
+            value: |-
+              BasicRule wl:1315 "mz:$HEADERS_VAR:Cookie";
         ports:
           - name: https
             containerPort: 443
