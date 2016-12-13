@@ -13,7 +13,7 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
-      - docker login -u="ukhomeofficedigital+drone_ho_example_dashboard" -p=${DOCKER_PASSWORD} quay.io
+      - docker login -u="ukhomeofficedigital+ho_example_dashboard" -p=${DOCKER_PASSWORD} quay.io
       - docker build -t quay.io/ukhomeofficedigital/ho-example-dashboard:${DRONE_COMMIT_SHA} .
       - docker tag quay.io/ukhomeofficedigital/ho-example-dashboard:${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/ho-example-dashboard:latest .
       - docker push quay.io/ukhomeofficedigital/ho-example-dashboard:${DRONE_COMMIT_SHA}
