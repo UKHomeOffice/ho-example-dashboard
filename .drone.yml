@@ -15,7 +15,7 @@ pipeline:
     commands:
       - docker login -u="ukhomeofficedigital+ho_example_dashboard" -p=${DOCKER_PASSWORD} quay.io
       - docker build -t quay.io/ukhomeofficedigital/ho-example-dashboard:${DRONE_COMMIT_SHA} .
-      - docker tag quay.io/ukhomeofficedigital/ho-example-dashboard:${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/ho-example-dashboard:latest .
+      - docker tag quay.io/ukhomeofficedigital/ho-example-dashboard:${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/ho-example-dashboard:latest
       - docker push quay.io/ukhomeofficedigital/ho-example-dashboard:${DRONE_COMMIT_SHA}
       - docker push quay.io/ukhomeofficedigital/ho-example-dashboard:latest
     when:
