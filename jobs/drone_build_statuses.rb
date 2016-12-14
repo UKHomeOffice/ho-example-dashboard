@@ -1,4 +1,4 @@
-require_relative "../lib/drone"
+require_relative "../lib/github_drone"
 require_relative "../config.rb"
 
 SCHEDULER.every '10s', :first_in => 0  do

@@ -22,6 +22,8 @@ spec:
         env:
         - name: GITHUB_REPOS
           value: {{.GITHUB_REPOS}}
+        - name: DRONE_GH_SERVER
+          value: https://drone.digital.homeoffice.gov.uk
         - name: GITHUB_USERNAME
           valueFrom:
             secretKeyRef:
