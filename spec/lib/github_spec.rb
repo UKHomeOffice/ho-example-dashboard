@@ -1,5 +1,5 @@
 require 'json'
-require_relative '../../lib/github'
+require_relative '../../lib/github_lib'
 require_relative '../data/mock_github_responses'
 require_relative '../../config'
 
@@ -15,7 +15,7 @@ RSpec.describe 'get_github_branches' do
         to_return(:status => 200, :body => GITHUB_BRANCHES2, :headers => {:content_type => 'application/json'})
 
     # And I call get_github_branches
-    result = get_github_branches([repo_name1, repo_name2])
+    result = Gh.get_branches([repo_name1, repo_name2])
 
     # Then I expect the result to equal the list of branches
     expected_result = [{:repo => 'UKHomeOffice/test-repo', :branches => ['master', 'patch-bug']},
