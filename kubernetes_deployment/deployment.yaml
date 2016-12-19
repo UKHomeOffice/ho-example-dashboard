@@ -24,6 +24,10 @@ spec:
           value: {{.GITHUB_REPOS}}
         - name: DRONE_GH_SERVER
           value: https://drone.digital.homeoffice.gov.uk
+        - name: DRONE_GL_SERVER
+          value: https://drone-gitlab.digital.homeoffice.gov.uk/
+        - name: GITLAB_SERVER
+          value: https://gitlab.digital.homeoffice.gov.uk
         - name: GITHUB_USERNAME
           valueFrom:
             secretKeyRef:

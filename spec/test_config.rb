@@ -4,5 +4,6 @@ TEST_CONFIG = {
     :drone_github_server => 'http://drone-gh-server.com',
     :github_server => 'https://api.github.com',
     :gitlab_server => 'https://fake-gitlab-server.com/api/v3',
-    :gitlab_token => 'not-a-real-gl-token'
+    :gitlab_token => 'not-a-real-gl-token',
+    :drone_gitlab_token => ''
 }
