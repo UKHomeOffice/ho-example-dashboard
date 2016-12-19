@@ -6,7 +6,26 @@ For a richer dashboarding experience we recommend forking this repo and customiz
 
 The dashboard is built on Smashing - check out https://github.com/SmashingDashboard/smashing for more information.
 
+## Configuration settings
+All config is taken in with environment variables, you can set the following parameters:
+**For dashboarding Github repo statuses**
+- GITHUB_REPOS - comma separated list of Github repos
+- GITHUB_USERNAME (whilst not required for open source repos it increases the rate limit dramatically so highly recommend setting this)
+- GITHUB_PASSWORD (whilst not required for open source repos it increases the rate limit dramatically so highly recommend setting this)
+- DRONE_GH_SERVER - Drone server used for Github CI
+- GITHUB_SERVER (defaults to https://api.github.com)
+
+**For dashboarding Gitlab repo statuses**
+- GITLAB_REPOS - command separated list of Gitlab repos in format TeamName/RepoName
+- DRONE_GL_SERVER
+- DRONE_GL_TOKEN
+- GITLAB_SERVER
+- GITLAB_TOKEN
+
 ## Deploying with kubernetes
+
+**IMPORTANT NOTE - if dashboarding private projects please ensure the project names and branch names aren't sensitive.
+There currently isn't any auth on the dashboards with the following deployments**
 
 ### Whilst we are trialling the dashboards... 
 You can deploy to the dev-induction namespace with the following command (setting your own params for the name of the dashboard and the repo names):
@@ -29,14 +48,14 @@ You will need:
 
 ### Customizing the dashboard
 The above gives you a basic dashboard with some core capabilities. If you would like to customize it further please fork this repo and tinker to your heart's content!
-
-### Future plans
-The dashboard currently only supports public repos in Github. Functionality will be added for Gitlab - this is the next thing on the roadmap.
+Let us know in [the issue here](https://github.com/UKHomeOffice/ho-example-dashboard/issues/9) if you do this please :)
 
 ## Running the dashboard on your machine
 You can run the dashboard locally or with docker. Passing in environment variables lets you specify github credentials 
 and the repos you wish to monitor. If you don't specify github credentials it will still work with public repos, 
 but the rate limit will be lower.
+
+**Note your local machine must have access to drone for this to work!**
 
 ### Running the dashboard with docker
 ```
