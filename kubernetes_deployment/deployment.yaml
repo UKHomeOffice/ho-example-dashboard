@@ -28,16 +28,11 @@ spec:
           value: https://drone-gitlab.digital.homeoffice.gov.uk/
         - name: GITLAB_SERVER
           value: https://gitlab.digital.homeoffice.gov.uk
-        - name: GITHUB_USERNAME
+        - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
-              name: gh-user
-              key: username
-        - name: GITHUB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: gh-user
-              key: password
+              name: gh-token
+              key: token
         resources:
           limits:
             cpu: 200m

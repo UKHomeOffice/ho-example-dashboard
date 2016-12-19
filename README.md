@@ -10,8 +10,7 @@ The dashboard is built on Smashing - check out https://github.com/SmashingDashbo
 All config is taken in with environment variables, you can set the following parameters:
 **For dashboarding Github repo statuses**
 - GITHUB_REPOS - comma separated list of Github repos
-- GITHUB_USERNAME (whilst not required for open source repos it increases the rate limit dramatically so highly recommend setting this)
-- GITHUB_PASSWORD (whilst not required for open source repos it increases the rate limit dramatically so highly recommend setting this)
+- GITHUB_TOKEN (whilst not required for open source repos it increases the rate limit dramatically so highly recommend setting this)
 - DRONE_GH_SERVER - Drone server used for Github CI
 - GITHUB_SERVER (defaults to https://api.github.com)
 
@@ -62,7 +61,7 @@ but the rate limit will be lower.
 git clone https://github.com/UKHomeOffice/ho-example-dashboard.git
 cd ho-example-dashboard
 docker build -t my-dashboard . 
-docker run -ti -p 3030:3030 -e GITHUB_REPOS=UKHomeOffice/my-project-1,UKHomeOffice/my-project2 -e GITHUB_USERNAME=myusername GITHUB_PASSWORD=mypassword my-dashboard
+docker run -ti -p 3030:3030 -e GITHUB_REPOS=UKHomeOffice/my-project-1,UKHomeOffice/my-project2 -e GITHUB_TOKEN=mypassword my-dashboard
 ```
 You will find the dashboard on http://localhost:3030
 
@@ -71,7 +70,7 @@ You will find the dashboard on http://localhost:3030
 git clone https://github.com/UKHomeOffice/ho-example-dashboard.git
 cd ho-example-dashboard
 bundle install
-GITHUB_REPOS=UKHomeOffice/my-project-1,UKHomeOffice/my-project2 -e GITHUB_USERNAME=myusername GITHUB_PASSWORD=mypassword smashing start
+GITHUB_REPOS=UKHomeOffice/my-project-1,UKHomeOffice/my-project2 GITHUB_TOKEN=mypassword smashing start
 ```
 You will find the dashboard on http://localhost:3030
 

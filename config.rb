@@ -2,8 +2,8 @@ CONFIG = {}
 
 module Config
   def Config.check_github_env_vars
-    if !ENV['GITHUB_USERNAME'] || !['GITHUB_PASSWORD']
-      puts 'WARN: GITHUB_USERNAME or GITHUB_PASSWORD aren\'t set. This will result in a very low rate limit'
+    if !['GITHUB_TOKEN']
+      puts 'WARN: GITHUB_TOKEN isn\'t set. This will result in a very low rate limit'
     end
     if !ENV['DRONE_GH_SERVER']
       puts 'DRONE_GH_SERVER must be set'
@@ -23,8 +23,7 @@ module Config
 
   def Config.set_github_config
     CONFIG[:github_repos] = (ENV['GITHUB_REPOS'] || '').split(',')
-    CONFIG[:github_login] = ENV['GITHUB_USERNAME']
-    CONFIG[:github_password] = ENV['GITHUB_PASSWORD']
+    CONFIG[:github_token] = ENV['GITHUB_TOKEN']
     CONFIG[:drone_github_server] = ENV['DRONE_GH_SERVER']
     CONFIG[:github_server] = ENV['GITHUB_SERVER'] || 'https://api.github.com'
   end
