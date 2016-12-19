@@ -22,16 +22,17 @@ spec:
         env:
         - name: GITHUB_REPOS
           value: {{.GITHUB_REPOS}}
-        - name: GITHUB_USERNAME
+        - name: DRONE_GH_SERVER
+          value: https://drone.digital.homeoffice.gov.uk
+        - name: DRONE_GL_SERVER
+          value: https://drone-gitlab.digital.homeoffice.gov.uk/
+        - name: GITLAB_SERVER
+          value: https://gitlab.digital.homeoffice.gov.uk
+        - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
-              name: gh-user
-              key: username
-        - name: GITHUB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: gh-user
-              key: password
+              name: gh-token
+              key: token
         resources:
           limits:
             cpu: 200m
