@@ -21,27 +21,23 @@ All config is taken in with environment variables, you can set the following par
 - GITLAB_SERVER
 - GITLAB_TOKEN
 
+## Managing tokens for Gitlab and Gitlab Drone
+You will need to request an O365 dashboard account to be created by [contacting the Home Team](https://github.com/UKHomeOffice/central-devteam-board/wiki#office-365-accounts)
+and requesting a dashboard account. **It's important you specify that it is a dashboard account** 
+
+These will then need to be granted **read only** access to the relevant repos, and API tokens for Drone and Gitlab created for them.
+
 ## Deploying with kubernetes
 
 **IMPORTANT NOTE - if dashboarding private projects please ensure the project names and branch names aren't sensitive.
 There currently isn't any auth on the dashboards with the following deployments**
 
-### Whilst we are trialling the dashboards... 
-You can deploy to the dev-induction namespace with the following command (setting your own params for the name of the dashboard and the repo names):
-```
-drone deploy -p DASHBOARD_NAME=my-dashboard -p GITHUB_REPOS=UKHomeOffice/repo1,UKHomeOffice/repo2 UKHomeOffice/ho-example-dashboard 29 dashboard
-```
-Note the number refers to the current build of the dashboard. Please increment this number to match later builds on drone if you would like to use a later version.
-
-It will take a few minutes to deploy, at which point you'll be able to see your dashboard here (replacing my-dashboard with your dashboard name):
-https://my-dashboard.notprod.homeoffice.gov.uk/example
-
-
 ### Long term deploy solution
 You will need:
 
 1. A namespace to deploy to
-1. A step in your drone yaml to do the deploy (you can use the deploy step in this repos .drone.yml as a guide)
+1. A step in your drone yaml to do the deploy (you can use the deploy step in this repos [.drone.yml](.drone.yml) as a 
+guide, and the files in [kubernetes_deployment](kubernetes_deployment))
 1. Drone secrets for KUBE_TOKEN to deploy to your chosen namespace
 1. Secrets within that namespace for TLS encryption matching the name given in the ingress controller (external-tls)
 
