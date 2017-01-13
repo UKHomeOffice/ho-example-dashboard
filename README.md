@@ -1,4 +1,6 @@
 # HO Example Dashboard
+[![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/ho-example-dashboard/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/ho-example-dashboard)
+
 This repo is here to provide a quick and easy way for teams to get running with a basic dashboard.
 Over time it will be expanded with more features.
 
@@ -51,6 +53,18 @@ and the repos you wish to monitor. If you don't specify github credentials it wi
 but the rate limit will be lower.
 
 **Note your local machine must have access to drone for this to work!**
+
+### Running the dashboard with the public docker image (no customization)
+```
+docker run \ 
+  -e GITLAB_REPOS=myteam/myrepo \
+  -e GITLAB_SERVER=https://gitlab.digital.homeoffice.gov.uk \
+  -e GITLAB_TOKEN=XXXXX \
+  -e DRONE_GL_SERVER=https://drone-gitlab.digital.homeoffice.gov.uk \
+  -e DRONE_GL_TOKEN=XXXXX \
+  -p 3030:3030 \
+  quay.io/ukhomeofficedigital/ho-example-dashboard
+```
 
 ### Running the dashboard with docker
 ```
